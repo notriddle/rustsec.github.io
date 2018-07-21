@@ -18,8 +18,8 @@ layout: blank
 </main>
 {% if paginator.total_pages > 1 %}
 <footer>
-    <a {% if paginator.previous_page %} class="gray" href="{{ paginator.previous_page_path | prepend: site.baseurl }}" {% else %} class="disabled" {% endif %}>« newer posts</a>
+    <a {% if paginator.previous_page %} class="gray" href="{{ paginator.previous_page_path | prepend: site.baseurl }}" {% else %} class="disabled" {% endif %}>« newer advisories</a>
     <span class="paginate">page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-    <a {% if paginator.next_page %} class="gray" href="{{ paginator.next_page_path | prepend: site.baseurl }}" {% else %} class="disabled" {% endif %}>older posts »</a>
+    <a {% if paginator.next_page %} class="gray" href="{{ paginator.next_page_path | prepend: site.baseurl }}" {% else %} class="disabled" {% endif %}>older advisories »</a>
 </footer>
 {% endif %}
