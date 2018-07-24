@@ -20,7 +20,7 @@ To report a new vulnerability, open a pull request using the template below.
 See [CONTRIBUTING.md] for more information.
 
 <a href="https://github.com/RustSec/advisory-db/blob/master/CONTRIBUTING.md">
-  <img alt="Report Vulnerability" width="250px" height="60px" src="https://rustsec.org/assets/img/report-vuln-button.png">
+  <img alt="Report Vulnerability" width="250px" height="60px" src="https://rustsec.org/assets/img/report-vuln-button.svg">
 </a>
 
 [CONTRIBUTING.md]: https://github.com/RustSec/advisory-db/blob/master/CONTRIBUTING.md
