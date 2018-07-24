@@ -18,11 +18,9 @@ consume the data and can be used for auditing and reporing (send PRs to add your
 
 ## Reporting Vulnerabilities
 
-To report a new vulnerability for a Rust crate, open a pull request using the
-template below. See [CONTRIBUTING.md] for more information.
+To report a new vulnerability for a Rust crate, open a pull request
+against the [RustSec Advisory Database].
 
 <a href="https://github.com/RustSec/advisory-db/blob/master/CONTRIBUTING.md">
   <img alt="Report Vulnerability" width="250px" height="60px" src="https://rustsec.org/assets/img/report-vuln-button.svg">
 </a>
-
-[CONTRIBUTING.md]: https://github.com/RustSec/advisory-db/blob/master/CONTRIBUTING.md
