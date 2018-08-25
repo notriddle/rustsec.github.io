@@ -2,8 +2,6 @@
 title: "About RustSec"
 ---
 
-## About RustSec
-
 [![Gitter Chat][gitter-image]][gitter-link]
 
 The [RustSec Advisory Database] is a repository of security advisories filed
