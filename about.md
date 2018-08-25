@@ -4,9 +4,13 @@ title: "About RustSec"
 
 ## About RustSec
 
+[![Gitter Chat][gitter-image]][gitter-link]
+
 The [RustSec Advisory Database] is a repository of security advisories filed
 against Rust crates published via <https://crates.io>
 
+[gitter-image]: https://badges.gitter.im/badge.svg
+[gitter-link]: https://gitter.im/RustSec/Lobby
 [RustSec Advisory Database]: https://github.com/RustSec/advisory-db
 
 ## RustSec Tools
