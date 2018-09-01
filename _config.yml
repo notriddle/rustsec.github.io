@@ -13,9 +13,8 @@ style:
   dark: true
 
 navigation:
-  - index.html
+  - index.md
   - advisories.html
-  - about.md
 
 #comments:
 #  disqus: "disqus-contrast"
@@ -26,7 +25,7 @@ links:
   - github: "https://github.com/RustSec/"
   - envelope: "https://groups.google.com/forum/#!forum/rustsec"
 
-defaults: 
+defaults:
 - scope:  { path: "" }
   values: { layout: "default" }
 - scope:  { path: "" }
