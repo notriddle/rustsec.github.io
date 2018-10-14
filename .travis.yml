@@ -1,7 +1,15 @@
 language: rust
-cache: cargo
+cache:
+- bundler
+- cargo
 
-script: cargo run -p rustsec-website-gen # check the generator succeeds
+install: bundle
+
+script:
+# check that the advisory -> markdown render succeeds
+- cargo run -p rustsec-website-gen
+# check that jekyll can build the site
+- jekyll build
 
 branches:
   only:

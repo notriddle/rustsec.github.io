@@ -6,10 +6,13 @@ extern crate serde_derive;
 
 use handlebars::Handlebars;
 use rustsec::{Advisory, AdvisoryDatabase};
-use std::{fs::File, io::{Read, Write}, path::PathBuf};
+use std::{fs::File, io::Write, path::PathBuf};
 
-/// Handlebars template for advisory markdown files
-pub const ADVISORY_TEMPLATE: &str = "advisory.md.hbs";
+/// Filename of the advisory template
+pub const ADVISORY_TEMPLATE_NAME: &str = "advisory.md.hbs";
+
+/// Handlebars template for advisory markdown files (from `advisory.md.hbs`)
+pub const ADVISORY_TEMPLATE_STRING: &str = include_str!("../templates/advisory.md.hbs");
 
 /// Parameters to pass to the `advisory.md.hbs` Handlebars template
 #[derive(Debug, Serialize)]
@@ -90,13 +93,9 @@ impl<'a> From<&'a Advisory> for AdvisoryParams {
 }
 
 fn main() {
-    let mut template_file = File::open(ADVISORY_TEMPLATE).unwrap();
-    let mut template = String::new();
-    template_file.read_to_string(&mut template).unwrap();
-
     let mut handlebars = Handlebars::new();
     handlebars
-        .register_template_string(ADVISORY_TEMPLATE, template)
+        .register_template_string(ADVISORY_TEMPLATE_NAME, ADVISORY_TEMPLATE_STRING)
         .unwrap();
 
     let advisories: Vec<AdvisoryParams> = AdvisoryDatabase::fetch()
@@ -106,10 +105,11 @@ fn main() {
         .collect();
 
     for advisory in &advisories {
-        let output_path = PathBuf::from("_posts").join(format!("{}-{}.md", advisory.date, advisory.id));
+        let output_path =
+            PathBuf::from("_posts").join(format!("{}-{}.md", advisory.date, advisory.id));
         println!("*** Rendering {}", output_path.display());
 
-        let rendered = handlebars.render(ADVISORY_TEMPLATE, advisory).unwrap();
+        let rendered = handlebars.render(ADVISORY_TEMPLATE_NAME, advisory).unwrap();
         let mut output_file = File::create(output_path).unwrap();
         output_file.write_all(rendered.as_bytes()).unwrap();
     }
