@@ -107,9 +107,16 @@ fn main() {
     for advisory in &advisories {
         let output_path =
             PathBuf::from("_posts").join(format!("{}-{}.md", advisory.date, advisory.id));
+
         println!("*** Rendering {}", output_path.display());
 
-        let rendered = handlebars.render(ADVISORY_TEMPLATE_NAME, advisory).unwrap();
+        let mut rendered = handlebars.render(ADVISORY_TEMPLATE_NAME, advisory).unwrap();
+
+        // TODO: escaping bug? Find a better solution for (not) escaping these
+        // These are getting escaped by handlebars and are double-escaped in the HTML
+        // unless removed using the hax below
+        rendered = rendered.replace("&lt;", "<").replace("&gt;", ">");
+
         let mut output_file = File::create(output_path).unwrap();
         output_file.write_all(rendered.as_bytes()).unwrap();
     }
