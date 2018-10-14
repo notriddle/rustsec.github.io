@@ -1,2 +1,4 @@
+Cargo.lock
 .sass-cache
 _site
+target/

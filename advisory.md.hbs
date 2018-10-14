@@ -1,0 +1,32 @@
+---
+title:       "{{id}}: {{package}}: {{title}}"
+description: "{{summary}}"
+date:        {{date}}
+tags:        {{tags}}
+permalink:   /advisories/{{id}}:output_ext
+---
+
+### Description
+
+{{description}}
+
+{{#if url ~}}
+### More Info
+
+<{{url}}>
+
+{{/if~}}
+
+### Patched Versions
+
+{{#each patched_versions ~}}
+- `{{this}}`
+{{/each~}}
+
+{{#if unaffected_versions}}
+### Unaffected Versions
+
+{{#each unaffected_versions ~}}
+- `{{this}}`
+{{/each ~}}
+{{/if ~}}

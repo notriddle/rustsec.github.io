@@ -1,0 +1,14 @@
+language: rust
+cache: cargo
+
+script: cargo run -p rustsec-website-gen # check the generator succeeds
+
+branches:
+  only:
+    - master
+
+rust:
+  - stable
+
+notifications:
+  irc: 'irc.mozilla.org#rustsec'
