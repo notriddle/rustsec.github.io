@@ -24,6 +24,7 @@ links:
   - twitter: "https://twitter.com/RustSec/"
   - github: "https://github.com/RustSec/"
   - envelope: "https://groups.google.com/forum/#!forum/rustsec"
+  - rss: "/feed.xml"
 
 defaults:
 - scope:  { path: "" }
