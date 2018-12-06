@@ -84,7 +84,7 @@ impl<'a> From<&'a Advisory> for AdvisoryParams {
             summary: summary.trim().to_owned(),
             description: advisory.description.trim().to_owned(),
             date: advisory.date.as_str().to_owned(),
-            tags: tags.join(", "),
+            tags: tags.join(" "),
             url: advisory.url.clone(),
             patched_versions,
             unaffected_versions,
