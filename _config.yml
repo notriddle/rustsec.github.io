@@ -13,8 +13,8 @@ style:
   dark: true
 
 navigation:
-  - index.md
   - advisories.html
+  - index.md
 
 #comments:
 #  disqus: "disqus-contrast"
