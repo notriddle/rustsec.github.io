@@ -19,9 +19,13 @@ permalink:   /advisories/{{id}}:output_ext
 
 ### Patched Versions
 
+{{#if patched_versions~}}
 {{#each patched_versions ~}}
 - `{{this}}`
 {{/each~}}
+{{~else~}}
+- None!
+{{~/if}}
 
 {{#if unaffected_versions}}
 ### Unaffected Versions
