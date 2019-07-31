@@ -8,12 +8,12 @@ permalink:   /advisories/{{id}}:output_ext
 
 ### Description
 
-{{description}}
+{{{description}}}
 
 {{#if url ~}}
 ### More Info
 
-<{{url}}>
+<{{{url}}}>
 
 {{/if~}}
 
@@ -21,7 +21,7 @@ permalink:   /advisories/{{id}}:output_ext
 
 {{#if patched_versions~}}
 {{#each patched_versions ~}}
-- `{{this}}`
+- `{{{this}}}`
 {{/each~}}
 {{~else~}}
 - None!
@@ -31,6 +31,6 @@ permalink:   /advisories/{{id}}:output_ext
 ### Unaffected Versions
 
 {{#each unaffected_versions ~}}
-- `{{this}}`
+- `{{{this}}}`
 {{/each ~}}
 {{/if ~}}
