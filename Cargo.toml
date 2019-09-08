@@ -1,5 +1,2 @@
 [workspace]
 members = ["rustsec-website-gen"]
-
-[patch.crates-io]
-rustsec = { git = "https://github.com/rustsec/rustsec-crate" }
