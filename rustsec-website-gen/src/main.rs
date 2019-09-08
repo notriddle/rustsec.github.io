@@ -1,11 +1,12 @@
-extern crate handlebars;
-extern crate rustsec;
-extern crate serde;
-#[macro_use]
-extern crate serde_derive;
+//! Generator for the https://rustsec.org web site
+//!
+//! Creates markdown versions of each advisory, which are rendered into a final
+//! template using markdown.
+
+#![warn(missing_docs, rust_2018_idioms, unused_qualifications)]
 
 use handlebars::Handlebars;
-use rustsec::{Advisory, AdvisoryDatabase};
+use serde::Serialize;
 use std::{fs::File, io::Write, path::PathBuf};
 
 /// Filename of the advisory template
@@ -48,44 +49,56 @@ pub struct AdvisoryParams {
     pub unaffected_versions: Option<Vec<String>>,
 }
 
-impl<'a> From<&'a Advisory> for AdvisoryParams {
-    fn from(advisory: &Advisory) -> AdvisoryParams {
+impl<'a> From<&'a rustsec::Advisory> for AdvisoryParams {
+    fn from(advisory: &rustsec::Advisory) -> AdvisoryParams {
         let patched_versions = advisory
-            .patched_versions
+            .versions
+            .patched
             .iter()
             .map(|req| req.to_string())
             .collect();
 
-        let unaffected_versions = if advisory.unaffected_versions.is_empty() {
+        let unaffected_versions = if advisory.versions.unaffected.is_empty() {
             None
         } else {
             Some(
                 advisory
-                    .unaffected_versions
+                    .versions
+                    .unaffected
                     .iter()
                     .map(|req| req.to_string())
                     .collect(),
             )
         };
 
-        let mut summary = advisory.description.replace('\n', " ").replace("  ", " ");
+        let mut summary = advisory
+            .metadata
+            .description
+            .replace('\n', " ")
+            .replace("  ", " ");
         summary.retain(|c| match c {
-            'A'...'Z' | 'a'...'z' | '0'...'9' | ' ' | ',' | '.' => true,
+            'A'..='Z' | 'a'..='z' | '0'..='9' | ' ' | ',' | '.' => true,
             _ => false,
         });
 
-        let mut tags = vec![advisory.package.to_string()];
-        tags.extend(advisory.keywords.iter().map(|kw| kw.as_str().to_owned()));
+        let mut tags = vec![advisory.metadata.package.to_string()];
+        tags.extend(
+            advisory
+                .metadata
+                .keywords
+                .iter()
+                .map(|kw| kw.as_str().to_owned()),
+        );
 
         AdvisoryParams {
-            id: advisory.id.to_string(),
-            package: advisory.package.to_string(),
-            title: advisory.title.clone(),
+            id: advisory.metadata.id.to_string(),
+            package: advisory.metadata.package.to_string(),
+            title: advisory.metadata.title.clone(),
             summary: summary.trim().to_owned(),
-            description: advisory.description.trim().to_owned(),
-            date: advisory.date.as_str().to_owned(),
+            description: advisory.metadata.description.trim().to_owned(),
+            date: advisory.metadata.date.as_str().to_owned(),
             tags: tags.join(" "),
-            url: advisory.url.clone(),
+            url: advisory.metadata.url.clone(),
             patched_versions,
             unaffected_versions,
         }
@@ -94,13 +107,16 @@ impl<'a> From<&'a Advisory> for AdvisoryParams {
 
 fn main() {
     let mut handlebars = Handlebars::new();
+    handlebars.set_strict_mode(true);
+    handlebars.register_escape_fn(handlebars::no_escape);
+
     handlebars
         .register_template_string(ADVISORY_TEMPLATE_NAME, ADVISORY_TEMPLATE_STRING)
         .unwrap();
 
-    let advisories: Vec<AdvisoryParams> = AdvisoryDatabase::fetch()
+    let advisories: Vec<AdvisoryParams> = rustsec::Database::fetch()
         .unwrap()
-        .advisories()
+        .iter()
         .map(AdvisoryParams::from)
         .collect();
 

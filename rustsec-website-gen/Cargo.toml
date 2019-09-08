@@ -1,11 +1,11 @@
 [package]
-name = "rustsec-website-gen"
+name    = "rustsec-website-gen"
 version = "0.0.0"
 authors = ["Tony Arcieri <bascule@gmail.com>"]
 publish = false
+edition = "2018"
 
 [dependencies]
-handlebars = "1"
-rustsec = "0.10"
-serde = "1"
-serde_derive = "1"
+handlebars = "2"
+rustsec = "0.12"
+serde = { version = "1", features = ["serde_derive"] }
