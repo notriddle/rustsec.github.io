@@ -11,16 +11,7 @@ against Rust crates published via <https://crates.io> maintained by the
 
 ## RustSec Tools
 
-### Command-line Utilities
-
 - [cargo-audit]: Audit `Cargo.lock` files for crates with security vulnerabilities
-
-### Libraries
-
-- [`rustsec` crate]: Client library for the RustSec Advisory Database
-- [`cargo-lock` crate]: Parser for `Cargo.lock` files used by RustSec
-
-### Libraries
 
 ## Reporting Vulnerabilities
 
