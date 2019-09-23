@@ -11,7 +11,7 @@ against Rust crates published via <https://crates.io> maintained by the
 
 ## RustSec Tools
 
-- [cargo-audit]: Audit `Cargo.lock` files for crates with security vulnerabilities
+- [cargo-audit:] Audit `Cargo.lock` files for crates with security vulnerabilities
 
 ## Reporting Vulnerabilities
 
@@ -24,6 +24,4 @@ against the [RustSec Advisory Database].
 
 [RustSec Advisory Database]: https://github.com/RustSec/advisory-db
 [Rust Secure Code Working Group]: https://github.com/rust-secure-code/wg
-[cargo-audit]: https://github.com/RustSec/cargo-audit
-[`rustsec` crate]: https://github.com/RustSec/rustsec-crate
-[`cargo-lock` crate]: https://github.com/RustSec/cargo-lock
+[cargo-audit:]: https://github.com/RustSec/cargo-audit
