@@ -3,14 +3,24 @@ title: "About RustSec"
 ---
 
 The [RustSec Advisory Database] is a repository of security advisories filed
-against Rust crates published via <https://crates.io>
+against Rust crates published via <https://crates.io> maintained by the
+[Rust Secure Code Working Group].
 
 [gitter-image]: https://badges.gitter.im/badge.svg
 [gitter-link]: https://gitter.im/RustSec/Lobby
 
 ## RustSec Tools
 
-* [cargo-audit:] Audit `Cargo.lock` files for crates with security vulnerabilities
+### Command-line Utilities
+
+- [cargo-audit]: Audit `Cargo.lock` files for crates with security vulnerabilities
+
+### Libraries
+
+- [`rustsec` crate]: Client library for the RustSec Advisory Database
+- [`cargo-lock` crate]: Parser for `Cargo.lock` files used by RustSec
+
+### Libraries
 
 ## Reporting Vulnerabilities
 
@@ -22,4 +32,7 @@ against the [RustSec Advisory Database].
 </a>
 
 [RustSec Advisory Database]: https://github.com/RustSec/advisory-db
-[cargo-audit:]: https://github.com/RustSec/cargo-audit
+[Rust Secure Code Working Group]: https://github.com/rust-secure-code/wg
+[cargo-audit]: https://github.com/RustSec/cargo-audit
+[`rustsec` crate]: https://github.com/RustSec/rustsec-crate
+[`cargo-lock` crate]: https://github.com/RustSec/cargo-lock
