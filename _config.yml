@@ -35,7 +35,7 @@ defaults:
 - scope:  { path: "assets/img" }
   values: { image: true }
 
-exclude: ["rustsec-website-gen/"]
+exclude: ["rustsec-website-gen/","vendor"]
 
 sass:    { style: expanded }
 plugins: [ jekyll-feed, jekyll-paginate ]
