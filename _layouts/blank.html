@@ -6,7 +6,6 @@
 <title>{% if page.title %} {{ page.title }} › {% endif %}{{ site.title }}</title>
 <link rel="canonical" href="{{ page.url | prepend: site.baseurl | prepend: site.url}}">
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="{{ '/basic.css' | prepend: site.baseurl }}" rel="stylesheet">
 <link href="{{ '/highlight.css' | prepend: site.baseurl }}" rel="stylesheet">
 <link href="{{ '/index.css' | prepend: site.baseurl }}" rel="stylesheet">
@@ -20,7 +19,7 @@
         {% for path in site.navigation %}{% assign node = site.pages | where: "path", path | first %}<a href="{{ node.url | prepend: site.baseurl }}">{{ node.title }}</a>{% endfor %}
         <a href="https://gitter.im/RustSec/Lobby"><img src="https://badges.gitter.im/badge.svg" alt="Gitter Chat"></a>
     </div>
-    <div>{% for link_hash in site.links %}{% for link in link_hash %}<a href="{{ link[1] }}"><i class="fa fa-{{ link[0] }}"></i></a>{% endfor %}{% endfor %}</div>
+    <div>{% for link in site.links %}<a href="{{ link.url }}" title="{{ link.title }}" aria-label="{{ link.title }}">{% include {{ link.icon }} %}</a>{% endfor %}</div>
   </nav>
 </header>
 {{ content }}

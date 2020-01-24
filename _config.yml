@@ -21,10 +21,10 @@ navigation:
 #  isso: "comments.mysite.org"
 
 links:
-  - twitter: "https://twitter.com/RustSec/"
-  - github: "https://github.com/RustSec/"
-  - envelope: "https://groups.google.com/forum/#!forum/rustsec"
-  - rss: "/feed.xml"
+  - { icon: fontawesome/twitter.svg, url: "https://twitter.com/RustSec/", title: "Twitter" }
+  - { icon: fontawesome/github.svg, url: "https://github.com/RustSec/", title: "GitHub" }
+  - { icon: fontawesome/envelope.svg, url: "https://groups.google.com/forum/#!forum/rustsec", title: "Mailing List" }
+  - { icon: fontawesome/rss.svg, url: "/feed.xml", title: "RSS Feed" }
 
 defaults:
 - scope:  { path: "" }
